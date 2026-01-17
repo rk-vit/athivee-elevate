@@ -18,6 +18,9 @@ import BehaviourArchitecture from "@/pages/services/BehaviourArchitecture";
 import LeadershipExcel from "@/pages/services/LeadershipExcel";
 import LeadershipExcavation from "@/pages/services/LeadershipExcavation";
 import LeadershipArchitecture from "@/pages/services/LeadershipArchitecture";
+import CompetencyFramework from "@/pages/services/CompetencyFramework";
+import BehaviourAssessment from "@/pages/services/BehaviourAssessment";
+import AssessmentCentre from "@/pages/services/AssessmentCentre";
 
 const queryClient = new QueryClient();
 
@@ -43,6 +46,9 @@ const App = () => (
           <Route path="/services/leadership-excel" element={<LeadershipExcel />} />
           <Route path="/services/leadership-excavation" element={<LeadershipExcavation />} />
           <Route path="/services/leadership-architecture" element={<LeadershipArchitecture />} />
+          <Route path="/services/competency-framework" element={<CompetencyFramework />} />
+          <Route path="/services/behaviour-assessment" element={<BehaviourAssessment />} />
+          <Route path="/services/assessment-centre" element={<AssessmentCentre />} />
 
           <Route path="*" element={<NotFound />} />
 

@@ -23,7 +23,15 @@ const navigation = [
           { name: "Leadership Architecture", href: "/services/leadership-architecture" },
         ],
       },
-      { name: "Talent Assessment", href: "/talent-assessment" },
+      {
+        name: "Talent Assessment",
+        href: "/talent-assessment",
+        children: [
+          { name: "Competency Framework", href: "/services/competency-framework" },
+          { name: "Behaviour Assessment", href: "/services/behaviour-assessment" },
+          { name: "Assessment Centre", href: "/services/assessment-centre" },
+        ],
+      },
     ],
   },
   { name: "Challenges", href: "/challenges" },
