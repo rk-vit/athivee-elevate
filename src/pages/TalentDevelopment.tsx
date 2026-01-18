@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { Link } from "react-router-dom";
 import {
   ChevronDown,
   Users,
@@ -7,6 +8,10 @@ import {
   Award,
   Compass,
   ArrowRight,
+  CheckCircle,
+  Brain,
+  Lightbulb,
+  TrendingUp,
 } from "lucide-react";
 import Layout from "@/components/layout/Layout";
 import AnimatedSection from "@/components/ui/AnimatedSection";
@@ -20,17 +25,17 @@ const services = [
     title: "Behaviour Architecture",
     subtitle: "Building the Foundation of Leadership",
     description:
-      "A comprehensive framework for understanding and developing the behavioural competencies that drive leadership effectiveness.",
+      "Architecting the right behaviours to deliver high performance and measurable organisational impact. Building the habits, mindsets and changes people need to succeed.",
     details: [
-      "Behavioural competency mapping aligned to organizational values",
-      "Individual and team behavioural assessments",
-      "Customized development plans based on behavioural gaps",
-      "Integration with performance management systems",
+      "Behavioural habits aligned to business priorities",
+      "Scientific assessments (DISC, OPQ, etc.)",
+      "Customized content for leaders and teams",
+      "Action Building (AB) Programs for sustained change",
     ],
     outcomes: [
-      "Clearer behavioural expectations",
-      "Improved self-awareness",
-      "Targeted development focus",
+      "Clarity, consistency and accountability",
+      "Behaviours aligned to organisational goals",
+      "Measurable performance improvement",
     ],
     link: "/services/behaviour-architecture",
   },
@@ -40,17 +45,17 @@ const services = [
     title: "Leadership Excel",
     subtitle: "Accelerating High-Potential Development",
     description:
-      "An intensive development program designed to fast-track high-potential leaders for senior leadership roles.",
+      "Leaders in Excel is an active, comprehensive development program designed to strengthen capabilities and ensure leaders at all levels are ready for transformation.",
     details: [
-      "Accelerated learning journeys for high-potential talent",
+      "Mid-Level & Senior Leader programs",
+      "Scientific assessments and IDP creation",
       "Executive coaching and mentoring",
-      "Strategic project assignments",
-      "Cross-functional exposure and networking",
+      "Action Learning on real business challenges",
     ],
     outcomes: [
       "Faster leadership readiness",
       "Stronger talent pipeline",
-      "Reduced external hiring",
+      "Improved decision-making and collaboration",
     ],
     link: "/services/leadership-excel",
   },
@@ -60,17 +65,17 @@ const services = [
     title: "Leadership Excavation",
     subtitle: "Discovering Hidden Potential",
     description:
-      "A deep-dive program that uncovers latent leadership capabilities and accelerates their development.",
+      "Transformational leaders are shaped by their unique values and beliefs. Our LEAD Process enables leaders to uncover and transform their underlying beliefs that shape their behaviors.",
     details: [
-      "Comprehensive potential assessment",
-      "Strengths-based development approach",
+      "The LEAD Process for deep transformation",
+      "Aligning personal values with organizational culture",
       "Experiential learning interventions",
-      "Personal leadership brand development",
+      "Measuring impact through communication and influence",
     ],
     outcomes: [
-      "Identified hidden talent",
-      "Unleashed potential",
-      "Enhanced self-confidence",
+      "Increased presence and accountability",
+      "Cultural and behavioral alignment",
+      "Clear understanding of ROI",
     ],
     link: "/services/leadership-excavation",
   },
@@ -80,20 +85,44 @@ const services = [
     title: "Leadership Architecture",
     subtitle: "Building Leadership at Scale",
     description:
-      "A systematic approach to building leadership capability across all levels of the organization.",
+      "Leadership is not a role—it is a carefully shaped capability. Leadership Architecture brings design, clarity and intentionality to how leaders live and influence others.",
     details: [
-      "Leadership competency framework development",
-      "Multi-level leadership development programs",
-      "Leadership culture transformation",
+      "Role-specific leadership profiles",
+      "Competency assessments at every level",
+      "Internal Leadership Assessments",
       "Succession planning integration",
     ],
     outcomes: [
       "Consistent leadership standards",
-      "Scalable development",
+      "Stronger leadership pipeline",
       "Sustainable leadership culture",
     ],
     link: "/services/leadership-architecture",
   },
+];
+
+const whatMakesUsDifferent = [
+  {
+    icon: <Brain className="w-6 h-6" />,
+    title: "Beyond Traditional Training",
+    description: "While conventional training focuses on knowledge transfer, our approach creates lasting behavioural change through immersive, experiential methods.",
+  },
+  {
+    icon: <Target className="w-6 h-6" />,
+    title: "Behavioural Focus",
+    description: "Addressing the underlying behaviours that drive performance, not just surface-level skills.",
+  },
+  {
+    icon: <TrendingUp className="w-6 h-6" />,
+    title: "Sustained Impact",
+    description: "Reinforcement mechanisms that ensure lasting transformation through action building programs.",
+  },
+];
+
+const learningModel = [
+  { percentage: "70%", label: "Experiential Learning", description: "On Job Trainings, Boot Camps, Out Bound Programmes" },
+  { percentage: "20%", label: "Social Learning", description: "Mentoring, Peer Learning, Coaching" },
+  { percentage: "10%", label: "Formal Learning", description: "Instructor Led & Virtual Programs" },
 ];
 
 const TalentDevelopment = () => {
@@ -108,17 +137,68 @@ const TalentDevelopment = () => {
         backgroundImage={bgImage}
       />
 
-      {/* ================= SERVICES SECTION ================= */}
+      {/* What Makes Us Different */}
+      <section className="section-padding bg-cream">
+        <div className="container-custom">
+          <AnimatedSection className="text-center max-w-3xl mx-auto mb-16">
+            <span className="inline-block text-primary font-medium text-sm uppercase tracking-wider mb-4">
+              Our Philosophy
+            </span>
+            <h2 className="heading-section text-foreground mb-6">
+              What Makes Us Different
+            </h2>
+          </AnimatedSection>
+
+          <div className="grid md:grid-cols-3 gap-8 mb-16">
+            {whatMakesUsDifferent.map((item, index) => (
+              <motion.div
+                key={item.title}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+                className="text-center p-8 bg-card rounded-xl border border-border"
+              >
+                <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-6">
+                  <div className="text-primary">{item.icon}</div>
+                </div>
+                <h3 className="font-serif font-semibold text-lg text-foreground mb-3">{item.title}</h3>
+                <p className="text-muted-foreground text-sm">{item.description}</p>
+              </motion.div>
+            ))}
+          </div>
+
+          {/* 70-20-10 Model */}
+          <AnimatedSection>
+            <div className="bg-gradient-to-r from-primary/5 to-primary/10 rounded-2xl p-8 lg:p-12">
+              <h3 className="font-serif text-2xl font-bold text-foreground text-center mb-8">
+                Our Learning Model
+              </h3>
+              <div className="grid md:grid-cols-3 gap-6">
+                {learningModel.map((item, index) => (
+                  <motion.div
+                    key={item.label}
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: index * 0.1 }}
+                    className="text-center"
+                  >
+                    <div className="text-5xl font-serif font-bold text-primary mb-2">{item.percentage}</div>
+                    <h4 className="font-semibold text-foreground mb-2">{item.label}</h4>
+                    <p className="text-sm text-muted-foreground">{item.description}</p>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+          </AnimatedSection>
+        </div>
+      </section>
+
+      {/* Services Section */}
       <section className="relative pb-24 pt-12 overflow-hidden bg-[#1f2d36]">
-        {/* dotted pattern */}
         <div
-          className="
-            absolute inset-0
-            bg-[radial-gradient(circle,rgba(255,255,255,0.14)_1px,transparent_1px)]
-            [background-size:20px_20px]
-            opacity-35
-            pointer-events-none
-          "
+          className="absolute inset-0 bg-[radial-gradient(circle,rgba(255,255,255,0.14)_1px,transparent_1px)] [background-size:20px_20px] opacity-35 pointer-events-none"
         />
 
         <div className="relative z-10">
@@ -128,8 +208,7 @@ const TalentDevelopment = () => {
                 Our Development Solutions
               </h2>
               <p className="text-body text-white/70">
-                Comprehensive programs designed to build leadership capabilities
-                that drive organizational excellence.
+                Comprehensive programs designed to build leadership capabilities that drive organizational excellence.
               </p>
             </AnimatedSection>
 
@@ -143,12 +222,9 @@ const TalentDevelopment = () => {
                   transition={{ delay: index * 0.08 }}
                   className="border border-border rounded-2xl overflow-hidden bg-card"
                 >
-                  {/* HEADER */}
                   <button
                     onClick={() =>
-                      setExpandedId(
-                        expandedId === service.id ? null : service.id
-                      )
+                      setExpandedId(expandedId === service.id ? null : service.id)
                     }
                     className="w-full p-6 md:p-8 flex items-center gap-6 text-left hover:bg-secondary/50 transition-colors"
                   >
@@ -172,7 +248,6 @@ const TalentDevelopment = () => {
                     />
                   </button>
 
-                  {/* EXPANDED CONTENT */}
                   <AnimatePresence>
                     {expandedId === service.id && (
                       <motion.div
@@ -222,13 +297,13 @@ const TalentDevelopment = () => {
                           </div>
 
                           <div className="mt-8 flex justify-end">
-                            <a
-                              href={service.link}
+                            <Link
+                              to={service.link}
                               className="inline-flex items-center gap-2 text-sm font-medium text-primary hover:gap-3 transition-all"
                             >
                               Learn More
                               <ArrowRight className="w-4 h-4" />
-                            </a>
+                            </Link>
                           </div>
                         </div>
                       </motion.div>
@@ -241,7 +316,7 @@ const TalentDevelopment = () => {
         </div>
       </section>
 
-      {/* ================= CTA SECTION ================= */}
+      {/* CTA Section */}
       <section className="section-padding bg-[#f6f2e8]">
         <div className="container-custom text-center">
           <AnimatedSection>
@@ -249,15 +324,14 @@ const TalentDevelopment = () => {
               Ready to Develop Your Leaders?
             </h2>
             <p className="text-body text-muted-foreground mb-8 max-w-2xl mx-auto">
-              Let's discuss how our talent development solutions can help you
-              build exceptional leadership capabilities.
+              Let's discuss how our talent development solutions can help you build exceptional leadership capabilities.
             </p>
-            <a
-              href="/contact"
+            <Link
+              to="/contact"
               className="inline-flex items-center gap-2 px-8 py-4 bg-primary text-primary-foreground rounded-lg font-medium hover:bg-primary/90 transition-colors"
             >
               Schedule a Consultation
-            </a>
+            </Link>
           </AnimatedSection>
         </div>
       </section>

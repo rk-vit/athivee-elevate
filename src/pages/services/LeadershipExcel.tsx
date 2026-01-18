@@ -1,7 +1,57 @@
 import { motion } from "framer-motion";
-import { Target, CheckCircle, Rocket, Users, Brain, MessageSquare, ArrowRight, TrendingUp } from "lucide-react";
+import { Target, CheckCircle, Rocket, Users, Brain, MessageSquare, ArrowRight, TrendingUp, Award, FileText, BarChart3 } from "lucide-react";
 import AnimatedSection from "@/components/ui/AnimatedSection";
 import ServiceLayout from "@/pages/services/ServiceLayout";
+
+const leaderPlans = [
+  {
+    title: "Mid-Level Leaders",
+    subtitle: "Team Leads and Supervisors",
+    targetAudience: ["Potential Leaders", "Future Successors", "Leaders in Pipeline", "Team Leads and Supervisors"],
+    approach: [
+      "Scientific Assessments for accurate capability mapping",
+      "Customized learning and training development",
+      "Measure the progress through IDPs",
+      "Action Learning on real business challenges",
+    ],
+    deliverable: "IDP (Individual Development Plan)",
+  },
+  {
+    title: "Senior Leaders",
+    subtitle: "Functional Heads and Business Leaders",
+    targetAudience: ["Senior Managers", "Functional Leaders", "Business Unit Heads", "Executive Team Members"],
+    approach: [
+      "Independent and collaborative practical evaluations",
+      "Improved communication and decision-making training",
+      "MAP (Management Action Plan) for effective results",
+      "Ability to lead and execute business priorities",
+    ],
+    deliverable: "ITP (Individual Transformation Plan)",
+  },
+];
+
+const interventionProcess = [
+  {
+    step: "01",
+    title: "Understanding Requirements",
+    description: "Understanding the leaders' business priorities and the necessary competencies required.",
+  },
+  {
+    step: "02",
+    title: "Measuring Capabilities",
+    description: "Measure the leaders' skills and competencies through assessments in the evaluation process.",
+  },
+  {
+    step: "03",
+    title: "Action Learning",
+    description: "All leaders participate in development activities designed to support the process with one-on-one mentoring.",
+  },
+  {
+    step: "04",
+    title: "Conduct Action Building",
+    description: "Leaders in development interventions with reinforced capabilities driven by individual development plans.",
+  },
+];
 
 const programElements = [
   {
@@ -26,30 +76,13 @@ const programElements = [
   },
 ];
 
-const journeyPhases = [
-  {
-    phase: "Foundation",
-    duration: "Weeks 1-4",
-    activities: ["360° Leadership Assessment", "Personal Development Plan", "Executive Coaching Launch"],
-  },
-  {
-    phase: "Acceleration",
-    duration: "Weeks 5-12",
-    activities: ["Strategic Business Challenge", "Peer Learning Cohorts", "Cross-Functional Exposure"],
-  },
-  {
-    phase: "Integration",
-    duration: "Weeks 13-16",
-    activities: ["Capstone Project Presentation", "Transition Planning", "Ongoing Mentorship Setup"],
-  },
-];
-
 const outcomes = [
   "Faster readiness for senior leadership roles",
   "Stronger internal talent pipeline",
+  "Improved decision-making and collaboration",
+  "Analysis to ensure aligned organizational culture",
+  "Measure the impact on IDP and development",
   "Reduced reliance on external hiring for key positions",
-  "Higher engagement and retention of top talent",
-  "Measurable improvement in leadership effectiveness scores",
 ];
 
 const LeadershipExcel = () => {
@@ -57,7 +90,7 @@ const LeadershipExcel = () => {
     <ServiceLayout
       badge="Talent Development"
       title="Leadership Excel"
-      subtitle="Accelerating the development of high-potential leaders for critical senior roles."
+      subtitle="An active, comprehensive development program designed to strengthen capabilities and ensure leaders at all levels are ready for transformation."
     >
       {/* Overview Section */}
       <AnimatedSection>
@@ -67,10 +100,10 @@ const LeadershipExcel = () => {
               Overview
             </span>
             <h3 className="font-serif text-3xl md:text-4xl font-bold text-foreground mb-6">
-              Fast-Track Your Future Leaders
+              Development Leaders for Tomorrow
             </h3>
             <p className="text-muted-foreground leading-relaxed mb-6">
-              Leadership Excel is an intensive, outcome-driven program designed to accelerate the development of high-potential individuals who are being groomed for senior leadership positions. Unlike traditional development programs that span years, Leadership Excel compresses critical growth experiences into a focused journey.
+              Leaders in Excel are active, comprehensive leaders in development designed to strengthen capabilities and ensure relevance. Leaders at all levels assess and customize skills using training and IDP (Individual Development Plan) to enhance the leaders in transformation.
             </p>
             <p className="text-muted-foreground leading-relaxed">
               Through a combination of executive coaching, strategic project assignments, and immersive learning experiences, participants rapidly build the capabilities needed to step into more complex leadership roles.
@@ -89,15 +122,80 @@ const LeadershipExcel = () => {
               <div className="flex items-center gap-4 text-sm">
                 <div className="flex items-center gap-2 text-muted-foreground">
                   <div className="w-2 h-2 rounded-full bg-primary" />
-                  16-week program
+                  Cohort-based
                 </div>
                 <div className="flex items-center gap-2 text-muted-foreground">
                   <div className="w-2 h-2 rounded-full bg-primary" />
-                  Cohort-based
+                  IDP & ITP Focus
                 </div>
               </div>
             </div>
           </div>
+        </div>
+      </AnimatedSection>
+
+      {/* Leader Plans */}
+      <AnimatedSection>
+        <div className="text-center max-w-3xl mx-auto mb-12">
+          <span className="inline-block text-primary font-medium text-sm uppercase tracking-wider mb-4">
+            Program Tracks
+          </span>
+          <h3 className="font-serif text-3xl md:text-4xl font-bold text-foreground">
+            Tailored for Every Leadership Level
+          </h3>
+        </div>
+        <div className="grid md:grid-cols-2 gap-8">
+          {leaderPlans.map((plan, index) => (
+            <motion.div
+              key={plan.title}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.15 }}
+              className="p-8 bg-card rounded-2xl border border-border"
+            >
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center">
+                  <Award className="w-6 h-6 text-primary" />
+                </div>
+                <div>
+                  <h4 className="font-serif font-bold text-foreground text-xl">{plan.title}</h4>
+                  <p className="text-sm text-muted-foreground">{plan.subtitle}</p>
+                </div>
+              </div>
+              
+              <div className="mb-6">
+                <h5 className="font-semibold text-foreground text-sm mb-3">Target Audience</h5>
+                <div className="flex flex-wrap gap-2">
+                  {plan.targetAudience.map((audience, i) => (
+                    <span key={i} className="px-3 py-1 text-xs bg-primary/10 text-primary rounded-full">
+                      {audience}
+                    </span>
+                  ))}
+                </div>
+              </div>
+
+              <div className="mb-6">
+                <h5 className="font-semibold text-foreground text-sm mb-3">Our Approach</h5>
+                <ul className="space-y-2">
+                  {plan.approach.map((item, i) => (
+                    <li key={i} className="flex items-start gap-2 text-sm text-muted-foreground">
+                      <CheckCircle className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <div className="pt-4 border-t border-border">
+                <div className="flex items-center gap-2">
+                  <FileText className="w-5 h-5 text-primary" />
+                  <span className="font-semibold text-foreground">Deliverable:</span>
+                  <span className="text-muted-foreground">{plan.deliverable}</span>
+                </div>
+              </div>
+            </motion.div>
+          ))}
         </div>
       </AnimatedSection>
 
@@ -133,7 +231,7 @@ const LeadershipExcel = () => {
         </div>
       </AnimatedSection>
 
-      {/* Journey Timeline - Dark Section */}
+      {/* Intervention Process - Dark Section */}
       <div className="-mx-4 md:-mx-8 lg:-mx-16 px-4 md:px-8 lg:px-16 py-20 bg-[#1f2d36] relative overflow-hidden">
         <div
           className="absolute inset-0 bg-[radial-gradient(circle,rgba(255,255,255,0.08)_1px,transparent_1px)] [background-size:24px_24px] opacity-40 pointer-events-none"
@@ -141,43 +239,31 @@ const LeadershipExcel = () => {
         <div className="relative z-10">
           <AnimatedSection className="text-center max-w-3xl mx-auto mb-12">
             <span className="inline-block text-blue-400 font-medium text-sm uppercase tracking-wider mb-4">
-              Program Journey
+              Intervention Requirements
             </span>
             <h3 className="font-serif text-3xl md:text-4xl font-bold text-white mb-4">
-              The Leadership Excel Experience
+              The Leadership Excel Journey
             </h3>
             <p className="text-white/70">
-              A carefully structured 16-week journey that builds capabilities progressively while delivering business impact.
+              A carefully structured journey that builds capabilities progressively while delivering business impact.
             </p>
           </AnimatedSection>
 
-          <div className="grid md:grid-cols-3 gap-6">
-            {journeyPhases.map((phase, index) => (
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {interventionProcess.map((phase, index) => (
               <motion.div
-                key={phase.phase}
+                key={phase.step}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.15 }}
                 className="relative p-6 bg-white/5 backdrop-blur-sm rounded-xl border border-white/10"
               >
-                <div className="flex items-center justify-between mb-4">
-                  <span className="text-xs font-medium text-blue-400 uppercase tracking-wider">
-                    {phase.duration}
-                  </span>
-                  <span className="text-4xl font-serif font-bold text-white/10">
-                    {String(index + 1).padStart(2, '0')}
-                  </span>
-                </div>
-                <h4 className="font-semibold text-white text-xl mb-4">{phase.phase}</h4>
-                <ul className="space-y-2">
-                  {phase.activities.map((activity, i) => (
-                    <li key={i} className="flex items-center gap-2 text-white/70 text-sm">
-                      <div className="w-1.5 h-1.5 rounded-full bg-blue-400" />
-                      {activity}
-                    </li>
-                  ))}
-                </ul>
+                <span className="text-4xl font-serif font-bold text-white/10 absolute top-4 right-4">
+                  {phase.step}
+                </span>
+                <h4 className="font-semibold text-white text-lg mb-3">{phase.title}</h4>
+                <p className="text-white/70 text-sm">{phase.description}</p>
               </motion.div>
             ))}
           </div>

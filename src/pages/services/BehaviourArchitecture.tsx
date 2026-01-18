@@ -1,7 +1,58 @@
 import { motion } from "framer-motion";
-import { Users, CheckCircle, Target, Layers, ArrowRight, Briefcase, BarChart3 } from "lucide-react";
+import { Users, CheckCircle, Target, Layers, ArrowRight, Briefcase, BarChart3, Brain, Lightbulb, MessageSquare, Award, TrendingUp } from "lucide-react";
 import AnimatedSection from "@/components/ui/AnimatedSection";
 import ServiceLayout from "@/pages/services/ServiceLayout";
+
+const skillCategories = [
+  {
+    category: "Self Leadership",
+    skills: ["Emotional Intelligence", "Personal Effectiveness", "Neuro-Linguistic Programming", "Managerial Effectiveness"],
+  },
+  {
+    category: "Team Leadership",
+    skills: ["Interpersonal Skills", "Career Instruction", "Innovation", "Accountability and Ownership"],
+  },
+  {
+    category: "Strategic Leadership",
+    skills: ["Decision Making", "Problem Solving", "Team Building", "Driving Conversations"],
+  },
+  {
+    category: "Commercial Skills",
+    skills: ["Sales Leadership", "Sales Strategy Development", "Finance for Non-Finance Executives", "Presentation Skills"],
+  },
+];
+
+const processSteps = [
+  {
+    step: "01",
+    title: "Meeting with Leaders",
+    description: "Understand organisational needs and business priorities through stakeholder discussions.",
+  },
+  {
+    step: "02",
+    title: "Measuring Behaviours",
+    description: "Assess participants using scientific assessments such as DISC, OPQ, etc.",
+  },
+  {
+    step: "03",
+    title: "Creating the Framework",
+    description: "Create content for leaders and teams based on identified needs, ensuring every intervention aligns with organisational objectives.",
+  },
+  {
+    step: "04",
+    title: "Action Building Programs",
+    description: "Help participants practise and sustain the desired behaviours through structured programs.",
+  },
+];
+
+const outcomes = [
+  "Clear behavioural expectations for leaders at every level",
+  "Consistency in leadership decision-making across the organization",
+  "Strong alignment between stated values and observable actions",
+  "Objective criteria for leadership selection and promotion",
+  "Enhanced accountability through measurable behavioural standards",
+  "Behaviours that are understood, measured, developed and reinforced",
+];
 
 const keyComponents = [
   {
@@ -12,7 +63,7 @@ const keyComponents = [
   {
     icon: <BarChart3 className="w-5 h-5" />,
     title: "Gap Assessment",
-    description: "Measure current behavioural gaps across all leadership levels.",
+    description: "Measure current behavioural gaps across all leadership levels using scientific tools.",
   },
   {
     icon: <Target className="w-5 h-5" />,
@@ -26,43 +77,12 @@ const keyComponents = [
   },
 ];
 
-const outcomes = [
-  "Clear behavioural expectations for leaders at every level",
-  "Consistency in leadership decision-making across the organization",
-  "Strong alignment between stated values and observable actions",
-  "Objective criteria for leadership selection and promotion",
-  "Enhanced accountability through measurable behavioural standards",
-];
-
-const process = [
-  {
-    step: "01",
-    title: "Discovery",
-    description: "We conduct stakeholder interviews and analyze your strategic priorities to understand the behaviours that matter most.",
-  },
-  {
-    step: "02",
-    title: "Design",
-    description: "We create a tailored behavioural framework with clear definitions and observable indicators for each level.",
-  },
-  {
-    step: "03",
-    title: "Deploy",
-    description: "We integrate the framework into your HR systems and provide training for managers and leaders.",
-  },
-  {
-    step: "04",
-    title: "Sustain",
-    description: "We support ongoing adoption with coaching, calibration sessions, and periodic framework reviews.",
-  },
-];
-
 const BehaviourArchitecture = () => {
   return (
     <ServiceLayout
       badge="Talent Development"
       title="Behaviour Architecture"
-      subtitle="Designing the behavioural foundation that enables effective leadership at every level of your organization."
+      subtitle="Architecting the right behaviours to deliver high performance and measurable organisational impact."
     >
       {/* Overview Section */}
       <AnimatedSection>
@@ -72,13 +92,13 @@ const BehaviourArchitecture = () => {
               Overview
             </span>
             <h3 className="font-serif text-3xl md:text-4xl font-bold text-foreground mb-6">
-              Translate Values Into Observable Actions
+              Building the Habits, Mindsets and Changes People Need to Succeed
             </h3>
             <p className="text-muted-foreground leading-relaxed mb-6">
-              Behaviour Architecture focuses on defining, measuring, and embedding the behaviours that drive leadership effectiveness. We help organizations move beyond abstract values to create a clear, actionable framework of what great leadership looks like in practice.
+              Behaviour Architecture is Athivee's structured process shaping the everyday behaviours that drive organisational culture and performance. It focuses on helping individuals and teams achieve clarity, consistency and accountability so that business priorities are achieved through the right behavioural habits.
             </p>
             <p className="text-muted-foreground leading-relaxed">
-              By aligning leadership behaviours with strategic objectives, organizations create consistency, accountability, and a shared language for development and performance management.
+              While skills and knowledge are important, it is the habits that truly influence collaboration, leadership effectiveness and results. Our methodology ensures these behaviours are understood, measured, developed and reinforced through practical, real-world interventions.
             </p>
           </div>
           <div className="grid grid-cols-2 gap-4">
@@ -102,6 +122,45 @@ const BehaviourArchitecture = () => {
         </div>
       </AnimatedSection>
 
+      {/* Skills Categories */}
+      <AnimatedSection>
+        <div className="text-center max-w-3xl mx-auto mb-12">
+          <span className="inline-block text-primary font-medium text-sm uppercase tracking-wider mb-4">
+            Skill Development Areas
+          </span>
+          <h3 className="font-serif text-3xl md:text-4xl font-bold text-foreground">
+            Comprehensive Leadership Skills
+          </h3>
+          <p className="text-muted-foreground mt-4">
+            We equip individuals with the behavioural habits and mindsets required to perform their best and achieve organisational goals.
+          </p>
+        </div>
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {skillCategories.map((category, index) => (
+            <motion.div
+              key={category.category}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.1 }}
+              className="p-6 bg-card rounded-xl border border-border"
+            >
+              <h4 className="font-serif font-semibold text-foreground text-lg mb-4 pb-3 border-b border-border">
+                {category.category}
+              </h4>
+              <ul className="space-y-2">
+                {category.skills.map((skill, i) => (
+                  <li key={i} className="flex items-center gap-2 text-sm text-muted-foreground">
+                    <div className="w-1.5 h-1.5 rounded-full bg-primary" />
+                    {skill}
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
+          ))}
+        </div>
+      </AnimatedSection>
+
       {/* Process Section - Dark */}
       <div className="-mx-4 md:-mx-8 lg:-mx-16 px-4 md:px-8 lg:px-16 py-20 bg-[#1f2d36] relative overflow-hidden">
         <div
@@ -116,12 +175,12 @@ const BehaviourArchitecture = () => {
               How We Build Your Behaviour Framework
             </h3>
             <p className="text-white/70">
-              A structured, collaborative approach that ensures your behavioural framework is practical, relevant, and sustainable.
+              Through assessments, customised learning design and habit-building programs, we translate organisational goals into specific behavioural habits.
             </p>
           </AnimatedSection>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {process.map((item, index) => (
+            {processSteps.map((item, index) => (
               <motion.div
                 key={item.step}
                 initial={{ opacity: 0, y: 30 }}
